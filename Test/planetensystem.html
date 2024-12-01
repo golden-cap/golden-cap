@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="taralino.js"></script>
+</head>
+<body>
+<script>
+
+var sx = [];    //Arrays für die Sterne (x,y,Radius)
+var sy = [];
+var sr= [];
+var sterne = random(300,500);
+
+function setup(){
+
+  Canvas.init([-100,100], [-100,100], {width:800, background:"black"});
+  Animation.init({fps:100});
+
+  for (var i = 0; i < sterne; i = i+1) {
+    sx.push(random(-100,100));
+    sy.push(random(-100,100));
+    sr.push(random(0,0.3));
+  }
+
+  for (var i = 0; i < sterne; i = i+1) {
+    Canvas.circle(sx[i], sy[i], sr[i], {fill:"white"});
+  }
+
+}
+
+function loop(){
+
+  Canvas.clear();
+  
+  sternezeichnen()      //Sterne
+  Canvas.circle(0,0,5, {fill:"yellow"});   //Sonne
+
+  var t = time()/5;
+  
+  for (var i = 0; i < 1000; i = i+1) {
+    Canvas.circle(19.5*Math.cos(Math.PI*i/500),19.5*Math.sin(Math.PI*i/500),0.2,{fill:"white"});    // Erde: 50 = 0,39AE
+    Canvas.circle(36*Math.cos(Math.PI*i/500),36*Math.sin(Math.PI*i/500),0.2,{fill:"white"});    // Venus: 36 = 0,72AE
+    Canvas.circle(50*Math.cos(Math.PI*i/500),50*Math.sin(Math.PI*i/500),0.2,{fill:"white"});    // Erde: 50 = 1AE
+    Canvas.circle(75*Math.cos(Math.PI*i/500),75*Math.sin(Math.PI*i/500),0.2,{fill:"white"});    // Mars: 75 = 1,5AE
+  }
+
+    Canvas.circle(19.5*Math.cos(Math.PI*t*365/87),19.5*Math.sin(Math.PI*t*365/87),1,{fill:"grey"});    // Erde: 50 = 0,39AE
+    Canvas.circle(36*Math.cos(Math.PI*t*365/224),36*Math.sin(Math.PI*t*365/224),5,{fill:"white"});    // Venus: 36 = 0,72AE
+    Canvas.circle(50*Math.cos(Math.PI*t*365/365),50*Math.sin(Math.PI*t*365/365),5,{fill:"blue"});    // Erde: 5 = Durchmesser der Erde
+    Canvas.circle(75*Math.cos(Math.PI*t*365/689),75*Math.sin(Math.PI*t*365/689),2.5,{fill:"red"});    // Mars: 75 = 1,5AE
+
+
+}
+
+function sternezeichnen(){
+  for (var i = 0; i < sterne; i = i+1) {
+    Canvas.circle(sx[i], sy[i], sr[i], {fill:"white"});
+  }
+}
+
+</script>
+</body>
+</html>
