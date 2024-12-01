@@ -14,3 +14,21 @@ Dies ist ein Test
 ## Kapitel 2
 
 ### Kapitel 3
+
+| Syntax | Description |
+| ----------- | ----------- |
+| Header | Title |
+| Paragraph | Text |
+
+```
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
+
+`code`
+
+H~2~O
+
